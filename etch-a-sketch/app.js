@@ -1,5 +1,6 @@
 const container = document.querySelector("#container");
-let selectedColor = "#000000"
+const colorPicker = document.getElementById("colorpicker");
+let selectedColor = "#000000";
 let gridValue = 16;
 for(let i=0; i<gridValue;i++)
    {
@@ -82,7 +83,7 @@ button.addEventListener("click",clearSketch);
 const resizeButton = document.querySelector("#resize");
 resizeButton.addEventListener("click",resize);
 
-const colorPicker = document.getElementById("colorpicker");
+
 colorPicker.addEventListener("change",getColor);
 
 

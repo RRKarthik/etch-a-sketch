@@ -1,0 +1,67 @@
+html,body{
+    height:100vh;
+}
+
+body{
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+    background-color: #4e3d53;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.hover
+{
+    background-color: black;
+}
+
+#container{
+    border-style:groove;
+    border-radius: 3px;
+    border-color: black;
+    background-color:white;
+    height:500px;
+    width:500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#painter{
+    width:245px;
+    height: 300px;
+    position: absolute;
+    bottom: 10px;
+    left: 150px;
+}
+#brush{
+    height: 80%;
+    position: relative;
+    left:80px;
+    top:130px;
+}
+
+#options{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#options>button,input{
+    margin:0 20px;
+    background-color: #eff7e1;
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-family: 'Gochi Hand', cursive;
+    font-size: 80px;
+    margin:0;
+    color: #ffb400;
+    
+}

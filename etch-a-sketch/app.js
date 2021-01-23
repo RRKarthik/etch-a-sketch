@@ -1,12 +1,9 @@
 const container = document.querySelector("#container");
+let selectedColor = "#000000"
 let gridValue = 16;
-buildGrid(gridValue);
-
-function buildGrid(gridValue)
-{
-    for(let i=0; i=gridValue;i++)
+for(let i=0; i<gridValue;i++)
    {
-    for(let j=0; j=gridValue;j++)
+    for(let j=0; j<gridValue;j++)
     {
     const div = document.createElement("div");
     div.innerHTML = "&nbsp;";
@@ -18,31 +15,34 @@ function buildGrid(gridValue)
     }
    }
 
-}
-/*
+
+
 function rebuildGrid(gridValue)
 {   
 
     console.log(gridValue);
     const cont = document.getElementById("container");
-    const body = document.body.removeChild(cont);
-    const container = document.createElement("div");
-    container.id = "container";
-    for(let i=0; gridValue;i++)
+    const mainContainer = document.getElementById("main");
+    const contain = document.createElement("div");
+    contain.id = "container";
+   mainContainer.replaceChild(contain,cont);
+    for(let i=0;i< gridValue;i++)
    {
-    for(let j=0; gridValue;j++)
+    for(let j=0;j< gridValue;j++)
     {
     const div = document.createElement("div");
     div.innerHTML = "&nbsp;";
     div.classList.add("child-div");
     div.style.height = `${500/gridValue}px`;
     div.style.width = `${500/gridValue}px`;
-    container.appendChild(div);
-    body.appendChild(container);
+    contain.appendChild(div);
+
 
     }
    }
-}*/
+   const divs = document.querySelectorAll(".child-div");
+divs.forEach(div=> div.addEventListener("mouseover",hover));
+}
 
 function hover(e)
 {  
@@ -52,18 +52,38 @@ function hover(e)
 function clearSketch()
 {
     divs.forEach(div=>div.classList.remove("hover"));
-    const newGridDimensions = parseInt(prompt("Enter the new dimensions (For a 2*2 grid enter 2)"));
-    rebuildGrid(newGridDimensions);
+    
 
 }
 
 
+
+function resize()
+{
+    const newGridDimensions = parseInt(prompt("Enter the new dimensions (For a 4*4 grid enter 4)"));
+    rebuildGrid(newGridDimensions);
+}
+
+function getColor(e)
+{ 
+  divs.forEach(div=>div.classList.remove("hover"));
+  selectedColor =   e.target.value;
+  console.log(selectedColor);
+  const styleSheet = document.styleSheets[0];
+  styleSheet.cssRules[2].style.backgroundColor = selectedColor;
+}
 
 const divs = document.querySelectorAll(".child-div");
 divs.forEach(div=> div.addEventListener("mouseover",hover));
 
 const button = document.querySelector("#btn");
 button.addEventListener("click",clearSketch);
+
+const resizeButton = document.querySelector("#resize");
+resizeButton.addEventListener("click",resize);
+
+const colorPicker = document.getElementById("colorpicker");
+colorPicker.addEventListener("change",getColor);
 
 
 
